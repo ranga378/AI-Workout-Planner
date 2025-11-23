@@ -78,7 +78,7 @@ const ExerciseCard = ({ exercise, index }) => {
  * Handles user input capture and validation.
  */
 const GeneratorForm = ({ onGenerate, isLoading }) => {
-  const [formData, setFormData] = useStste({
+  const [formData, setFormData] = useState({
     level: 'beginner',
     goal: 'strength',
     duration: '30'
