@@ -78,7 +78,7 @@ const ExerciseCard = ({ exercise, index }) => {
  * Handles user input capture and validation.
  */
 const GeneratorForm = ({ onGenerate, isLoading }) => {
-  const = useState({
+  const [formData, setFormData] = useStste({
     level: 'beginner',
     goal: 'strength',
     duration: '30'
@@ -176,7 +176,14 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Database of exercises (Simulating a backend DB)
-  const exerciseDB =;
+  const exerciseDB = [
+    { id: 1, title: "Push-ups", level: "beginner", type: "strength" },
+    { id: 2, title: "Bodyweight Squats", level: "beginner", type: "strength" },
+    { id: 3, title: "Jumping Jacks", level: "beginner", type: "cardio" },
+    { id: 4, title: "Plank", level: "intermediate", type: "strength" },
+    { id: 5, title: "Lunges", level: "intermediate", type: "strength" },
+    { id: 6, title: "Burpees", level: "advanced", type: "cardio" }
+];
 
   const generatePlan = async (preferences) => {
     setIsLoading(true);
@@ -188,9 +195,9 @@ const App = () => {
     // AI Logic Simulation: Filter and Shuffle
     // In a real app, this would be a fetch() call to an OpenAI endpoint
     const filtered = exerciseDB.filter(ex => 
-      (ex.level === preferences.level |
+      (ex.level === preferences.level ||
 
-| ex.level === 'beginner')
+ ex.level === 'beginner')
     );
     
     const shuffled = filtered.sort(() => 0.5 - Math.random());
